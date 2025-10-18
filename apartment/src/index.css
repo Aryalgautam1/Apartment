@@ -1,0 +1,151 @@
+// Global styles for the Rgaon Apartment website
+// This file defines the design system, color palette, and global styles
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+Design System for Rgaon Apartment Website
+==========================================
+This file defines all colors, gradients, fonts, and design tokens.
+All colors are defined in HSL format for better color manipulation.
+The design system uses a professional blue and gold color scheme
+that conveys luxury and trustworthiness for apartment rentals.
+*/
+
+@layer base {
+  /* Light theme color palette - Professional blue and gold scheme */
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 215 25% 15%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Primary brand colors - Deep blue for trust and professionalism */
+    --primary: 215 45% 25%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors - Gold accent for luxury feel */
+    --secondary: 40 85% 60%;
+    --secondary-foreground: 215 45% 25%;
+
+    /* Muted colors for subtle elements */
+    --muted: 215 20% 96%;
+    --muted-foreground: 215 15% 50%;
+
+    /* Accent colors - Gold for highlights and CTAs */
+    --accent: 40 85% 60%;
+    --accent-foreground: 215 45% 25%;
+
+    /* Destructive colors for errors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border and input colors */
+    --border: 215 20% 90%;
+    --input: 215 20% 90%;
+    --ring: 215 45% 25%;
+
+    /* Border radius for consistent rounded corners */
+    --radius: 0.75rem;
+    
+    /* Custom gradients for visual appeal */
+    --gradient-hero: linear-gradient(135deg, hsl(215 45% 25%) 0%, hsl(215 55% 35%) 50%, hsl(40 85% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(40 85% 60%) 0%, hsl(40 90% 70%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(215 20% 98%) 100%);
+    
+    /* Custom shadow system for depth */
+    --shadow-soft: 0 4px 20px hsl(215 45% 25% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(215 45% 25% / 0.12);
+    --shadow-strong: 0 20px 60px hsl(215 45% 25% / 0.15);
+    
+    /* Smooth transitions for better UX */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar colors for navigation */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark theme color palette - Maintains brand colors with dark backgrounds */
+  .dark {
+    /* Base colors for dark mode */
+    --background: 215 30% 12%;
+    --foreground: 0 0% 98%;
+
+    /* Card colors for dark mode */
+    --card: 215 25% 16%;
+    --card-foreground: 0 0% 98%;
+
+    /* Popover colors for dark mode */
+    --popover: 215 25% 16%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary colors - Gold becomes primary in dark mode */
+    --primary: 40 85% 60%;
+    --primary-foreground: 215 45% 25%;
+
+    /* Secondary colors for dark mode */
+    --secondary: 215 30% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted colors for dark mode */
+    --muted: 215 25% 20%;
+    --muted-foreground: 215 15% 70%;
+
+    /* Accent colors - Gold accent remains prominent */
+    --accent: 40 85% 60%;
+    --accent-foreground: 215 45% 25%;
+
+    /* Destructive colors for dark mode */
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border and input colors for dark mode */
+    --border: 215 25% 25%;
+    --input: 215 25% 25%;
+    --ring: 40 85% 60%;
+    
+    /* Dark mode gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(215 30% 12%) 0%, hsl(215 35% 20%) 50%, hsl(40 85% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(40 85% 60%) 0%, hsl(40 90% 70%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(215 30% 12%) 0%, hsl(215 25% 16%) 100%);
+    
+    /* Sidebar colors for dark mode */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Global base styles */
+@layer base {
+  /* Apply consistent border colors to all elements */
+  * {
+    @apply border-border;
+  }
+
+  /* Set default background and text colors for the body */
+  body {
+    @apply bg-background text-foreground;
+  }
+}
