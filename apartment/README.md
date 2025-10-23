@@ -5,10 +5,18 @@ Welcome to the Rgaon Apartment website! This is a sleek, modern web application 
 ## What is this project?
 
 This is a **Customer Relationship Management (CRM) system** for apartment leasing that includes:
-- Beautiful property showcase with floor plans
-- Interactive tour scheduling system
-- Contact forms for lead generation
-- Modern, responsive design that works on all devices
+- ✅ Beautiful property showcase with floor plans
+- ✅ Interactive tour scheduling system with calendar picker
+- ✅ **Working contact forms** with EmailJS integration
+- ✅ Modern, responsive design that works on all devices
+- ✅ FAQ section with accordion UI
+- ✅ Testimonials from residents
+- ✅ Photo gallery component (ready to use)
+- ✅ SEO optimized with structured data (JSON-LD)
+- ✅ Error boundary for graceful error handling
+- ✅ Loading skeletons for better UX
+- ✅ Back-to-top button
+- ✅ Fully configured for Vercel deployment
 
 Perfect for property management companies looking to attract and convert potential tenants!
 
@@ -25,17 +33,32 @@ You'll need Node.js installed on your system. If you don't have it, grab it from
 # Step 1: Clone this repository to your local machine
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate into the project directory
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate into the apartment directory
+cd apartment
 
 # Step 3: Install all the necessary dependencies
 npm i
 
-# Step 4: Fire up the development server with hot reloading
+# Step 4: (Optional) Set up environment variables for working forms
+# See ENV_TEMPLATE.txt for instructions
+# Create a .env.local file with your EmailJS credentials
+
+# Step 5: Fire up the development server with hot reloading
 npm run dev
 ```
 
 That's it! The app should now be running at `http://localhost:5173` (or whatever port Vite assigns). You'll see live updates as you make changes to the code.
+
+### 📧 Setting Up Working Forms (Optional)
+
+The contact and schedule forms are integrated with EmailJS but need configuration:
+
+1. **Sign up at [EmailJS](https://www.emailjs.com/)** (free tier: 300 emails/month)
+2. **Create email templates** for contact and schedule forms
+3. **Copy `ENV_TEMPLATE.txt`** and create `.env.local` with your credentials
+4. **Restart dev server** to apply changes
+
+Forms will work in "demo mode" without configuration (logs to console). See `DEPLOYMENT.md` for detailed setup instructions.
 
 ### Alternative Development Methods
 
@@ -63,21 +86,38 @@ This project is built with some fantastic modern technologies:
 - **React Hook Form** - Performant forms with great UX
 - **Zod** - TypeScript-first schema validation
 
-## Deployment
+## 🚀 Deployment
 
-Ready to go live? You have several options:
+Ready to go live? This project is **optimized for Vercel** deployment!
 
-**Static Hosting (Recommended)**
-- Build the project: `npm run build`
-- Deploy the `dist` folder to any static hosting service like:
-  - Vercel
-  - Netlify
-  - GitHub Pages
-  - AWS S3 + CloudFront
+### Quick Deploy to Vercel (Recommended)
 
-**Traditional Hosting**
-- Upload the built files to your web server
-- Configure your server to serve the `index.html` for all routes (SPA routing)
+1. Push your code to GitHub
+2. Sign up at [vercel.com](https://vercel.com)
+3. Click "Import Project" and select your repository
+4. Vercel auto-detects settings - just click "Deploy"!
+
+**📖 Detailed Guide:** See `DEPLOYMENT.md` for complete step-by-step instructions including:
+- EmailJS setup for working forms
+- Environment variables configuration  
+- Custom domain setup
+- Analytics integration
+- Troubleshooting tips
+
+### Alternative Hosting Options
+
+**Other Static Hosts:**
+- Netlify - Similar to Vercel, great alternative
+- GitHub Pages - Free for public repos
+- Cloudflare Pages - Super fast CDN
+
+**Build Commands:**
+```sh
+npm run build    # Production build
+npm run preview  # Preview production build locally
+```
+
+The `dist` folder contains your production-ready files.
 
 ## Custom Domain
 

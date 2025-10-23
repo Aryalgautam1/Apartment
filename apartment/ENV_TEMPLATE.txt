@@ -1,0 +1,38 @@
+# ================================
+# Environment Variables Template
+# ================================
+# 
+# Copy the content below and create a .env.local file in the apartment directory
+# Fill in your actual values
+#
+# IMPORTANT: Never commit .env.local to Git!
+# ================================
+
+# EmailJS Configuration
+# Sign up at https://www.emailjs.com/ to get these values
+VITE_EMAILJS_SERVICE_ID=your_service_id_here
+VITE_EMAILJS_TEMPLATE_ID_CONTACT=your_contact_template_id_here
+VITE_EMAILJS_TEMPLATE_ID_SCHEDULE=your_schedule_template_id_here
+VITE_EMAILJS_PUBLIC_KEY=your_public_key_here
+
+# Google Analytics (Optional)
+# Get your GA4 Measurement ID from Google Analytics
+VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+
+# Site Configuration
+# Update these with your actual contact information
+VITE_SITE_URL=http://localhost:5173
+VITE_CONTACT_EMAIL=leasing@rgaonapt.com
+VITE_CONTACT_PHONE=(555) 123-4567
+VITE_CONTACT_ADDRESS=123 Main Street, City, State 12345
+
+# ================================
+# For Vercel Deployment:
+# ================================
+# Add these same variables in:
+# Vercel Dashboard → Your Project → Settings → Environment Variables
+# 
+# Make sure to update VITE_SITE_URL to your actual Vercel URL:
+# VITE_SITE_URL=https://your-site.vercel.app
+# ================================
+

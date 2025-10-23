@@ -18,6 +18,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { sendContactEmail } from "@/services/emailService";
+import { siteConfig } from "@/config/site";
+import StructuredData from "@/components/StructuredData";
 
 // Form validation schema using Zod
 const formSchema = z.object({
@@ -44,27 +47,35 @@ const Contact = () => {
     },
   });
 
-  // Handle form submission - currently simulated, ready for backend integration
+  // Handle form submission - sends email via EmailJS
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log("Contact form submitted:", data);
-    
-    // Show success message to user
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you as soon as possible.",
-    });
-    
-    form.reset();
-    setIsSubmitting(false);
+    try {
+      await sendContactEmail(data);
+      
+      // Show success message to user
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      // Show error message
+      toast({
+        title: "Failed to send message",
+        description: error instanceof Error ? error.message : "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted">
+      <StructuredData type="ContactPage" />
       {/* Page Header */}
       <section className="bg-gradient-to-r from-primary to-accent text-primary-foreground py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -89,9 +100,7 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Visit Us</h3>
                     <p className="text-sm text-muted-foreground">
-                      123 Main Street
-                      <br />
-                      City, State 12345
+                      {siteConfig.contact.address}
                     </p>
                   </div>
                 </div>
@@ -104,11 +113,16 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Call Us</h3>
-                    <p className="text-sm text-muted-foreground">(555) 123-4567</p>
+                    <a 
+                      href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    >
+                      {siteConfig.contact.phone}
+                    </a>
                     <p className="text-xs text-muted-foreground mt-1">
-                      Mon-Fri: 9am-6pm
+                      {siteConfig.contact.hours.weekday}
                       <br />
-                      Sat-Sun: 10am-4pm
+                      {siteConfig.contact.hours.weekend}
                     </p>
                   </div>
                 </div>
@@ -121,7 +135,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email Us</h3>
-                    <p className="text-sm text-muted-foreground">leasing@rgaonapt.com</p>
+                    <a 
+                      href={`mailto:${siteConfig.contact.email}`}
+                      className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                    >
+                      {siteConfig.contact.email}
+                    </a>
                   </div>
                 </div>
               </Card>

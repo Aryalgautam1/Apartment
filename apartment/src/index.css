@@ -1,5 +1,5 @@
-// Global styles for the Rgaon Apartment website
-// This file defines the design system, color palette, and global styles
+/* Global styles for the Rgaon Apartment website */
+/* This file defines the design system, color palette, and global styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

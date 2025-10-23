@@ -2,6 +2,7 @@
 // Provides essential information and navigation for users
 import { Building2, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import { siteConfig } from "@/config/site";
 
 const Footer = () => {
   return (
@@ -52,16 +53,22 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-accent" />
-                <span>123 Main Street, City, State 12345</span>
+                <span>{siteConfig.contact.address}</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <a 
+                href={`tel:${siteConfig.contact.phone.replace(/\D/g, '')}`}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+              >
                 <Phone className="h-4 w-4 text-accent" />
-                <span>(555) 123-4567</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span>{siteConfig.contact.phone}</span>
+              </a>
+              <a 
+                href={`mailto:${siteConfig.contact.email}`}
+                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
+              >
                 <Mail className="h-4 w-4 text-accent" />
-                <span>leasing@rgaonapt.com</span>
-              </div>
+                <span>{siteConfig.contact.email}</span>
+              </a>
             </div>
           </div>
         </div>

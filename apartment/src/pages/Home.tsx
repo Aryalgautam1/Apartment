@@ -5,6 +5,9 @@ import { Card } from "@/components/ui/card";
 import { Building2, Bed, Wifi, Car, Shield, Dumbbell } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-apartment.jpg";
+import FAQ from "@/components/FAQ";
+import Testimonials from "@/components/Testimonials";
+import StructuredData from "@/components/StructuredData";
 
 const Home = () => {
   // Amenities data - easy to modify or add new features
@@ -43,6 +46,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      <StructuredData type="ApartmentComplex" />
       {/* Hero Section - Eye-catching banner with call-to-action buttons */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
         <div
@@ -107,6 +111,12 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section - Social proof from happy residents */}
+      <Testimonials />
+
+      {/* FAQ Section - Answer common questions */}
+      <FAQ />
 
       {/* Call-to-Action Section - Final push to convert visitors */}
       <section className="py-20 bg-gradient-to-r from-primary via-primary to-accent text-primary-foreground">

@@ -33,6 +33,7 @@ import {
 } from "@/components/ui/popover";
 import { CalendarIcon, Clock } from "lucide-react";
 import { format } from "date-fns";
+import { sendScheduleEmail } from "@/services/emailService";
 
 // Form validation schema for tour scheduling
 const formSchema = z.object({
@@ -86,23 +87,30 @@ const Schedule = () => {
     { value: "any", label: "No Preference" },
   ];
 
-  // Handle tour scheduling - currently simulated, ready for backend integration
+  // Handle tour scheduling - sends email via EmailJS
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     
-    // Simulate API call delay
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log("Appointment scheduled:", data);
-    
-    // Show success message with appointment details
-    toast({
-      title: "Tour scheduled successfully!",
-      description: `We'll see you on ${format(data.date, "PPP")} at ${data.time}`,
-    });
-    
-    form.reset();
-    setIsSubmitting(false);
+    try {
+      await sendScheduleEmail(data);
+      
+      // Show success message with appointment details
+      toast({
+        title: "Tour scheduled successfully!",
+        description: `We'll see you on ${format(data.date, "PPP")} at ${data.time}`,
+      });
+      
+      form.reset();
+    } catch (error) {
+      // Show error message
+      toast({
+        title: "Failed to schedule tour",
+        description: error instanceof Error ? error.message : "Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
