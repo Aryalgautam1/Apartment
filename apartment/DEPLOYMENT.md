@@ -197,12 +197,17 @@ This gives you:
 
 ## 🐛 Troubleshooting
 
+### Quick Reference
+📌 **See [QUICK_VERCEL_FIX.md](./QUICK_VERCEL_FIX.md)** for 1-minute fixes to common errors!
+
 ### Build Fails
 - Check the build logs in Vercel dashboard
-- Ensure all dependencies are in `package.json`
+- Ensure all dependencies are in `package.json` (✅ Fixed: added missing deps)
 - Test build locally: `npm run build`
+- See detailed error codes in [VERCEL_ERRORS_GUIDE.md](./VERCEL_ERRORS_GUIDE.md)
 
 ### 404 Errors on Routes
+- ✅ Already fixed in `vercel.json` with proper rewrites
 - Make sure `vercel.json` is committed (it handles routing)
 - Check that rewrites are configured correctly
 
@@ -210,12 +215,19 @@ This gives you:
 - Prefix must be `VITE_` for Vite to expose them
 - Redeploy after adding/changing variables
 - Clear build cache if issues persist
+- Use [ENV_TEMPLATE.txt](./ENV_TEMPLATE.txt) as reference
 
 ### Forms Not Sending Emails
 - Check EmailJS credentials are correct
 - Verify service is active in EmailJS dashboard
 - Check browser console for errors
 - Test with valid email addresses
+
+### Recently Fixed Issues
+✅ Missing `@emailjs/browser` dependency  
+✅ Missing `react-helmet-async` dependency  
+✅ Enhanced Vercel configuration  
+📄 See [FIXES_APPLIED.md](./FIXES_APPLIED.md) for details
 
 ---
 
